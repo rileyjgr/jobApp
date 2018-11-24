@@ -33,7 +33,7 @@ module.exports = {
                 query: {
                     presets: ['@babel/react'],
                     plugins: ['@babel/plugin-proposal-class-properties']
-               9 }
+                }
             }
         ]
     },
