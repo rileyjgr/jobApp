@@ -11,11 +11,13 @@ module.exports ={
         });
     },
     job: async(app)=>{
+
+        app.use(bodyParser.urlencoded({ extended: false }));
+        app.use(bodyParser.json());
+
         app.get('/api/jobs', controllers.getJobData);
         app.post('/api/jobs', controllers.addNewJob);
         app.get('/api/updateJobs');
         app.post('/api/updateJobs', controllers.updateJobData);
     }
 };
-
-
