@@ -3,26 +3,24 @@ const Job = require("../models/Job");
 module.exports = {
     addNewJob: async(req, res) => {
         console.log(req);
-
+        
         const {company, title, salary, location} = req.body;
-
         const newJob = new Job({company, title, salary, location});
 
         await newJob.save();
-
         return res.json({job: 'saved'});
     },
-    getJobData: async(req, res, next)=>{
+    getJobData: async(req, res)=>{
         await Job.find({}, (err, jobs)=>{
             console.log(jobs);
             let api = {};
             jobs.forEach((job)=>{
-                api[job.name] = job;
+                api[job.title] = job;
             });
            res.json(api);
         })
     },
-    updateJobData: async(req, res, next)=>{
+    updateJobData: async(req, res)=>{
         const {company, responded, interview, accepted, offer} = req.body;
         const newData = {
             responded: responded,
